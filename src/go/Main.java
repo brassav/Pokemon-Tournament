@@ -22,6 +22,10 @@ public class Main {
 		
 		ArrayList<Pokemon> listPokemon = new ArrayList<Pokemon>();
 		try {
+			/*
+			 * Si true, 5 points de degats sont infligés a chaque tour
+			 * a cause de la grele
+			 */
 			 tournoi = new Tournament(16, false);
 		} catch (NbPokemonException e) {
 			System.exit(1);
