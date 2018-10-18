@@ -39,6 +39,8 @@ public class Tournament {
 			throw new FullTournamentException();
 		else if (alPokemon.contains(pokemon))
 			throw new AlreadyRegisterException(pokemon);
+		else if (pokemon == null)
+			throw new NullPointerException();
 		else
 		{
 			alPokemon.add(pokemon);
@@ -152,7 +154,8 @@ public class Tournament {
 	
 	public void allRound() throws NbPokemonException
 	{
-		if ( Long.bitCount(nbPokemonMax) != 1 || nbPokemonMax < 2)
+		if ( Long.bitCount(nbPokemonMax) != 1 || nbPokemonMax < 2 ||
+				Long.bitCount(alPokemon.size()) != 1 || alPokemon.size() < 2 )
 			throw new NbPokemonException();
 		else
 		{
@@ -170,7 +173,7 @@ public class Tournament {
 	{
 		for (Pokemon pokemon : alPokemon)
 		{
-			System.out.println(pokemon.getName() + " est toujours dans le tournoi");
+			System.out.println(pokemon.toString() + " est toujours dans le tournoi");
 		}
 	}
 }
