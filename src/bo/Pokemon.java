@@ -2,15 +2,16 @@ package bo;
 
 public abstract class Pokemon {
 	private String name;
-	private int att;
+	private int vit;
 	private int pv;
 	private String shoutVictory;
 	private String shoutLose;
+	private Attack att;
 	
-	Pokemon(String name, int att, int pv, String shoutVictory, String shoutLose)
+	Pokemon(String name, int vit, int pv, String shoutVictory, String shoutLose)
 	{
 		this.name = name;
-		this.att = att;
+		this.vit = vit;
 		this.pv = pv;
 		this.shoutVictory = shoutVictory;
 		this.shoutLose = shoutLose;
@@ -20,8 +21,8 @@ public abstract class Pokemon {
 		return name;
 	}
 
-	public int getAtt() {
-		return att;
+	public int getVit() {
+		return vit;
 	}
 
 	public int getPv() {
@@ -35,10 +36,18 @@ public abstract class Pokemon {
 	public String getShoutLose() {
 		return shoutLose;
 	}
+	
+	public Attack getAtt() {
+		return att;
+	}
+	
+	protected void setAtt(Attack att) {
+		this.att = att;
+	}
 
 	@Override
 	public String toString()
 	{
-		return (name + "/" + att + "att/" + pv + "pv");
+		return (name + "/" + vit + "vit/" + pv + "pv");
 	}
 }

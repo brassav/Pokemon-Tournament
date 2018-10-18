@@ -7,7 +7,7 @@ public class PokemonFactory {
 
 	public Pokemon getPokemon(String name)
 	{
-		int att;
+		int vit;
 		int pv;
 		Random random = new Random();
 		
@@ -15,27 +15,27 @@ public class PokemonFactory {
 			return (null);
 		if (name.equalsIgnoreCase("pikachu"))
 		{
-			pv = 60 + random.nextInt(200 - 60);
-			att = 35 + random.nextInt(100 - 35);
-			return (new Pikachu(att, pv));
+			pv = 60 + random.nextInt(250 - 60);
+			vit = 75 + random.nextInt(200 - 75);
+			return (new Pikachu(vit, pv));
 		}
 		else if (name.equalsIgnoreCase("dracaufeu"))
 		{
-			pv = 100 + random.nextInt(250 - 100);
-			att = 45 + random.nextInt(110 - 45);
-			return (new Dracaufeu(att, pv));
+			pv = 100 + random.nextInt(300 - 100);
+			vit = 45 + random.nextInt(160 - 45);
+			return (new Dracaufeu(vit, pv));
 		}
 		else if (name.equalsIgnoreCase("mewtwo"))
 		{
-			pv = 90 + random.nextInt(225 - 90);
-			att = 40 + random.nextInt(130 - 40);
-			return (new Mewtwo(att, pv));
+			pv = 90 + random.nextInt(275 - 90);
+			vit = 40 + random.nextInt(240 - 40);
+			return (new Mewtwo(vit, pv));
 		}
 		else if (name.equalsIgnoreCase("victini"))
 		{
-			pv = 70 + random.nextInt(200 - 70);
-			att = 50 + random.nextInt(110 - 50);
-			return (new Victini(att, pv));
+			pv = 70 + random.nextInt(250 - 70);
+			vit = 65 + random.nextInt(220 - 65);
+			return (new Victini(vit, pv));
 		}
 		else
 			return null;

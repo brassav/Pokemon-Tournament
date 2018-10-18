@@ -22,7 +22,7 @@ public class Main {
 		
 		ArrayList<Pokemon> listPokemon = new ArrayList<Pokemon>();
 		try {
-			 tournoi = new Tournament(16, true);
+			 tournoi = new Tournament(16, false);
 		} catch (NbPokemonException e) {
 			System.exit(1);
 		}
