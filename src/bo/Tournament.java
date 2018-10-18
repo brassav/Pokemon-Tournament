@@ -13,14 +13,16 @@ import exceptions.NbPokemonException;
 public class Tournament {
 	private int nbPokemonMax;
 	private ArrayList<Pokemon> alPokemon;
+	private boolean weatherProblem;
 	
-	public Tournament(int nbPokemonMax) throws NbPokemonException
+	public Tournament(int nbPokemonMax, boolean weatherProblem) throws NbPokemonException
 	{
 		if ( Long.bitCount(nbPokemonMax) != 1 || nbPokemonMax < 2)
 			throw new NbPokemonException();
 		else
 		{
 			this.nbPokemonMax = nbPokemonMax;
+			this.weatherProblem = weatherProblem;
 			alPokemon = new ArrayList<Pokemon>();
 		}
 	}
@@ -88,7 +90,18 @@ public class Tournament {
 			+ " a inflige " + firstPokemon.getAtt() + " degat(s) a " 
 			+ secondPokemon.getName() + " a qui il ne reste plus que " 
 			+ (lifeSecondPokemon < 0 ? 0 : lifeSecondPokemon) + " pv");
-			
+			if (weatherProblem)
+			{
+				lifeSecondPokemon -= 5;
+				lifeFirstPokemon -= 5;
+				System.out.println('\t' + firstPokemon.getName() 
+				+ " est frappé par la grele, il lui reste " 
+				+ (lifeFirstPokemon < 0 ? 0 : lifeFirstPokemon) + " pv");
+				
+				System.out.println('\t' + secondPokemon.getName() 
+				+ " est frappé par la grele, il lui reste " 
+				+ (lifeSecondPokemon < 0 ? 0 : lifeSecondPokemon) + " pv");
+			}
 			if (lifeSecondPokemon > 0)
 			{
 				lifeFirstPokemon -= secondPokemon.getAtt();
@@ -96,6 +109,18 @@ public class Tournament {
 				+ " a inflige " + secondPokemon.getAtt() + " degat(s) a " 
 				+ firstPokemon.getName() + " a qui il ne reste plus que " 
 				+ (lifeFirstPokemon < 0 ? 0 : lifeFirstPokemon) + " pv");
+				
+				if (weatherProblem)
+				{
+					lifeSecondPokemon -= 5;
+					lifeFirstPokemon -= 5;
+					System.out.println('\t' + firstPokemon.getName() 
+					+ " est frappé par la grele, il lui reste " 
+					+ (lifeFirstPokemon < 0 ? 0 : lifeFirstPokemon) + " pv");
+					System.out.println('\t' + secondPokemon.getName() 
+					+ " est frappé par la grele, il lui reste " 
+					+ (lifeSecondPokemon < 0 ? 0 : lifeSecondPokemon) + " pv");
+				}
 			}
 		}
 		if (lifeFirstPokemon <= 0)
@@ -122,9 +147,16 @@ public class Tournament {
 		}
 	}
 	
+	/*
+	 * Possibilité pour l'utilisateur de lancer l'execution d'un round manuellement
+	 * Utile dans le cas ou l utilisateur souhaiterai pouvoir afficher la liste des 
+	 * pokemon restant a la fin d'un round
+	 */
 	public void round() throws MatchErrorException, NbPokemonException
 	{
-		if ( Long.bitCount(nbPokemonMax) != 1 || nbPokemonMax < 2)
+		if ( Long.bitCount(nbPokemonMax) != 1 || nbPokemonMax < 2 ||
+				Long.bitCount(alPokemon.size()) != 1 || alPokemon.size() < 2 )
+
 			throw new NbPokemonException();
 		else
 		{
